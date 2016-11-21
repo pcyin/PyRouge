@@ -1,2 +1,2 @@
 # PyRouge
-A python library to compute rouge score for summarization. Currently only Rouge-l is implemented.
+A python library to compute rouge score for summarization. Supports Rouge-l and Rouge-2.
