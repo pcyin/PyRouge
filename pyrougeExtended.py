@@ -11,7 +11,7 @@ def get_unigram_count(tokens):
     return count_dict
 
 
-class Rouge:
+class Rouge:    
     beta = 1
 
     @staticmethod
@@ -109,6 +109,8 @@ class Rouge:
 
 if __name__ == '__main__':
     r = Rouge()
+
+
 
 system_generated_summary = " The Kyrgyz President pushed through the law requiring the use of ink during the upcoming Parliamentary and Presidential elections In an effort to live up to its reputation in the 1990s as an island of democracy. The use of ink is one part of a general effort to show commitment towards more open elections. improper use of this type of ink can cause additional problems as the elections in Afghanistan showed. The use of ink and readers by itself is not a panacea for election ills."
 
