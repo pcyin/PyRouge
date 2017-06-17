@@ -21,7 +21,7 @@ print "Precision is :"+str(precision)+"\nRecall is :"+str(recall)+"\nF Score is 
 
 - Which gives the following output
 
-```python
+```
 Precision is :0.446058091286
 Recall is :0.439672801636
 F Score is :0.442843380487
