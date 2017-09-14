@@ -5,8 +5,10 @@ from itertools import chain
 def get_unigram_count(tokens):
     count_dict = dict()
     for t in tokens:
-        if t in count_dict: count_dict[t] += 1
-        else: count_dict[t] = 1
+        if t in count_dict:
+            count_dict[t] += 1
+        else:
+            count_dict[t] = 1
 
     return count_dict
 
@@ -19,17 +21,17 @@ class Rouge:
         n = len(x)
         m = len(y)
 
-        table = [[0 for i in xrange(m + 1)] for j in xrange(n + 1)]
+        table = [[0 for i in range(m + 1)] for j in range(n + 1)]
 
-        for j in xrange(m + 1):
-            for i in xrange(n + 1):
+        for j in range(m + 1):
+            for i in range(n + 1):
                 if i == 0 or j == 0:
                     cell = (0, 'e')
                 elif x[i - 1] == y[j - 1]:
                     cell = (table[i - 1][j - 1][0] + 1, '\\')
                 else:
-                    over = table[i-1][j][0]
-                    left = table[i][j-1][0]
+                    over = table[i - 1][j][0]
+                    left = table[i][j - 1][0]
 
                     if left < over:
                         cell = (over, '^')
@@ -98,7 +100,8 @@ class Rouge:
 
         precision = lcs_scores / cand_words_count
         recall = lcs_scores / ref_words_count
-        f_score = (1 + Rouge.beta ** 2) * precision * recall / (recall + Rouge.beta ** 2 * precision + 1e-7) + 1e-6 # prevent underflow
+        f_score = (1 + Rouge.beta ** 2) * precision * recall / (recall +
+                                                                Rouge.beta ** 2 * precision + 1e-7) + 1e-6  # prevent underflow
         return precision, recall, f_score
 
     # @staticmethod
@@ -110,10 +113,11 @@ class Rouge:
 if __name__ == '__main__':
     r = Rouge()
     # A simple eample of how rouge can be calculated
-    print r.rouge_l([[1, 7, 6, 7, 5], [0, 2, 8, 3, 5]], [[1, 2, 3, 4, 5], [3, 9, 5]])
+    print(r.rouge_l([[1, 7, 6, 7, 5], [0, 2, 8, 3, 5]],
+                    [[1, 2, 3, 4, 5], [3, 9, 5]]))
 
     # A more practical example of how it can be used for summary evaluation
     system_generated_summary = " The Kyrgyz President pushed through the law requiring the use of ink during the upcoming Parliamentary and Presidential elections In an effort to live up to its reputation in the 1990s as an island of democracy. The use of ink is one part of a general effort to show commitment towards more open elections. improper use of this type of ink can cause additional problems as the elections in Afghanistan showed. The use of ink and readers by itself is not a panacea for election ills."
     manual_summmary = " The use of invisible ink and ultraviolet readers in the elections of the Kyrgyz Republic which is a small, mountainous state of the former Soviet republic, causing both worries and guarded optimism among different sectors of the population. Though the actual technology behind the ink is not complicated, the presence of ultraviolet light (of the kind used to verify money) causes the ink to glow with a neon yellow light. But, this use of the new technology has caused a lot of problems. "
 
-    print r.rouge_l([system_generated_summary], [manual_summmary])
+    print(r.rouge_l([system_generated_summary], [manual_summmary]))
