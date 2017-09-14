@@ -16,7 +16,7 @@ manual_summmary = "The use of invisible ink and ultraviolet readers in the elect
 
 [precision, recall, f_score] = r.rouge_l([system_generated_summary], [manual_summmary])
 
-print "Precision is :"+str(precision)+"\nRecall is :"+str(recall)+"\nF Score is :"+str(f_score)
+print("Precision is :"+str(precision)+"\nRecall is :"+str(recall)+"\nF Score is :"+str(f_score))
 ```
 
 - Which gives the following output
@@ -34,5 +34,5 @@ F Score is :0.442843380487
 ```python
 from PyRouge.pyrouge import Rouge
 r = Rouge()
-print r.rouge_l([[1, 7, 6, 7, 5], [0, 2, 8, 3, 5]], [[1, 2, 3, 4, 5], [3, 9, 5]])
+print(r.rouge_l([[1, 7, 6, 7, 5], [0, 2, 8, 3, 5]], [[1, 2, 3, 4, 5], [3, 9, 5]]))
 ```
